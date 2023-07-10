@@ -5,17 +5,17 @@ import { removeTodo, toggle } from "../../redux/features/todos/todoSlice";
 const TodoItem = ({ todoItem }) => {
   const dispatch = useDispatch();
 
- 
-
   return (
     <div className="todo-box">
       {todoItem.map((item) => {
         return (
           <div className="todo-item" key={item.id}>
             <h4 className="flex justify-between items-center">
-              <span className={item.completed && "line-through"}>{item.value}</span>
-              <div className="flex ">
-                <input
+              <span className={item.completed && "line-through"}>
+                {item.value}
+              </span>
+              <div className="flex "> 
+                <input  
                   type="checkbox"
                   className="mr-2"
                   onChange={() => dispatch(toggle(item.id))}

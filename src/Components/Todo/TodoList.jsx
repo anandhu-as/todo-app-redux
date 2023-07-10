@@ -8,7 +8,7 @@ const TodoList = () => {
   const [todo, setTodo] = useState("");
   const handleAdd = () => {
     if (todo !== "") {
-      const newTodo = { id: Date.now(), value: todo };
+      const newTodo = { id: Date.now(), value: todo,completed:false};
       dispatch(addTodo(newTodo));
     }
     setTodo("");

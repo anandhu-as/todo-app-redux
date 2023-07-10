@@ -19,7 +19,6 @@ const todoSlice = createSlice({
       const todoItem = state.todoItem.find(
         (item) => item.id === action.payload
       );
-
       todoItem ? (todoItem.completed = !todoItem.completed) : "";
     },
   },
