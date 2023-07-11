@@ -6,9 +6,10 @@ const TodoList = () => {
   const dispatch = useDispatch();
   const { todoItem } = useSelector((state) => state.todo);
   const [todo, setTodo] = useState("");
+  const completedTodo=todoItem.filter((item)=>item.completed)
   const handleAdd = () => {
     if (todo !== "") {
-      const newTodo = { id: Date.now(), value: todo,completed:false};
+      const newTodo = { id: Date.now(), value: todo, completed: false };
       dispatch(addTodo(newTodo));
     }
     setTodo("");
@@ -34,6 +35,7 @@ const TodoList = () => {
       >
         Clear
       </button>
+      <h1 className="pl-8">completedTodo:{completedTodo.length}</h1>
       <TodoItem todoItem={todoItem} />
     </section>
   );
