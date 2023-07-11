@@ -11,6 +11,7 @@ const TodoList = () => {
   const { todoItem } = useSelector((state) => state.todo);
   const [todo, setTodo] = useState("");
   const completedTodo = todoItem.filter((item) => item.completed);
+  const remainingTodo = todoItem.filter((item) => !item.completed);
   const handleAdd = () => {
     if (todo !== "") {
       const newTodo = { id: Date.now(), value: todo, completed: false };
@@ -45,7 +46,12 @@ const TodoList = () => {
       >
         ClearCompleted
       </button>
-      <button className="ml-3   ">completedTodo:{completedTodo.length}</button>
+      <button className="ml-3  border-solid border-2 border-sky-200 py-2 px-3">
+        completed:{completedTodo.length}
+      </button>
+      <button className="ml-3 border-solid border-2 border-sky-100 py-2 px-3 ">
+        remaining:{remainingTodo.length}
+      </button>
       <TodoItem todoItem={todoItem} />
     </section>
   );
