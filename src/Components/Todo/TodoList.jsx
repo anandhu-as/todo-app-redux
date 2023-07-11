@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, clear } from "../../redux/features/todos/todoSlice";
+import {
+  addTodo,
+  clear,
+  clearCompleted,
+} from "../../redux/features/todos/todoSlice";
 import TodoItem from "./TodoItem";
 const TodoList = () => {
   const dispatch = useDispatch();
   const { todoItem } = useSelector((state) => state.todo);
   const [todo, setTodo] = useState("");
-  const completedTodo=todoItem.filter((item)=>item.completed)
+  const completedTodo = todoItem.filter((item) => item.completed);
   const handleAdd = () => {
     if (todo !== "") {
       const newTodo = { id: Date.now(), value: todo, completed: false };
@@ -35,7 +39,13 @@ const TodoList = () => {
       >
         Clear
       </button>
-      <h1 className="pl-8">completedTodo:{completedTodo.length}</h1>
+      <button
+        onClick={() => dispatch(clearCompleted())}
+        className=" bg-blue-200 hover:bg-red-600 text-black font-bold py-2 px-4 rounded ml-1"
+      >
+        ClearCompleted
+      </button>
+      <button className="ml-3   ">completedTodo:{completedTodo.length}</button>
       <TodoItem todoItem={todoItem} />
     </section>
   );
